@@ -29,7 +29,7 @@ export async function UpdateAction({ request, params }) {
     const formData = await request.formData();
   
     // construct new todo
-    const newTodo = {
+    const updatedTodo = {
       subject: formData.get("subject"),
       details: formData.get("details"),
     };
@@ -40,9 +40,20 @@ export async function UpdateAction({ request, params }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newTodo),
+      body: JSON.stringify(updatedTodo),
     });
   
     // redirect back to the index page
     return redirect("/");
   }
+
+export async function DeleteAction({params}){
+    // get the id
+    const id = params.id
+    // send delete request
+    await fetch(url + id + '/', {
+        method: 'delete'
+    })
+
+    return redirect('/')
+}

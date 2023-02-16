@@ -25,6 +25,9 @@ export default function Show(props){
             <input type="text" name="details" placeholder="details" defaultValue={post.details}/>
             <button>Update Todo</button>
         </Form>
+        <Form action={`/delete/${post.id}`} method="post">
+            <button>Delete Todo</button>
+        </Form>
     </div>
     </>)
 }
