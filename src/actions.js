@@ -1,10 +1,11 @@
 import { redirect } from "react-router-dom";
+
 import url from "./url";
 
 
 export default async function createAction({request}){
     // get Form Data
-    formData = await request.formData()
+    const formData = await request.formData()
     // construct body for API call
     const newTodo = {
         subject: formData.get("subject"),
