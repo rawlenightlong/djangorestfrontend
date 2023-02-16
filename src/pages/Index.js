@@ -1,3 +1,9 @@
+import { useLoaderData } from "react-router-dom"
+import Post from "../components/Post"
+
 export default function Index(props){
-    return <h1>Index</h1>
+
+    const todos = useLoaderData()
+
+    return todos.map(post => <Post key={post.id} post={post}/>)
 }
